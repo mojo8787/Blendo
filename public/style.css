@@ -1,0 +1,48 @@
+/* Add your global styles here */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header,
+.footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.services-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 100px; /* Adjust this value based on the height of your header */
+  }
+
+  .about-us-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 150px; /* Adjust this value based on the height of your header */
+  }
+  
+  
+  
+/* Add more styles as needed */
