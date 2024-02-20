@@ -19,7 +19,7 @@
           <li><router-link to="/about-us/welcome">Welcome to Warani</router-link></li>
           <li><router-link to="/about-us/goals">Our Goals</router-link></li>
           <li><router-link to="/about-us/visions">Visions</router-link></li>
-          <li><router-link to="/about-us/specialists">Our Specialists</router-link></li>
+          <li><router-link to="/about-us/specialist">Our Specialists</router-link></li>
           <li><router-link to="/about-us/green-promise">Our Green Promise</router-link></li>
           <li><router-link to="/about-us/meet-the-mind">Meet The Mind Behind Warani</router-link></li>
         </ul>
@@ -28,13 +28,21 @@
         <h4>Contact Us</h4>
         <p><strong>Email:</strong> info@warani.iq</p>
         <p><strong>Phone:</strong> +964 770 4444 866</p>
-        <p><strong>Address:</strong> Section 608, St. 7, Bld. 2/1, Al-Mamoon District, Baghdad, Iraq</p>
+        <p><strong>Address:</strong> Section 608, St. 7, Bld. 2/1, Al-Mamoon Dist., Baghdad, Iraq</p>
+      </div>
+      <div class="footer-section footer-certifications">
+        <h4>Certifications</h4>
+        <ul>
+          <li><a href="/assets/Warani - ISO 9001.pdf" target="_blank"><i class="fas fa-certificate"></i> ISO 9001</a></li>
+          <li><a href="/assets/Warani - ISO 14001.pdf" target="_blank"><i class="fas fa-certificate"></i> ISO 14001</a></li>
+          <li><a href="/assets/Warani - ISO 45001.pdf" target="_blank"><i class="fas fa-certificate"></i> ISO 45001</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="social-icons">
         <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <!-- Twitter icon restored -->
+        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
@@ -50,34 +58,54 @@ export default {
 </script>
 
 <style scoped>
+/* Add your styles here */
 .footer {
   background-color: #1A1A1A;
   color: #fff;
-  padding: 60px 40px; /* Increase padding for a larger footer */
-  font-size: 16px; /* Slightly larger font size for better readability */
+  padding: 60px 40px;
+  font-size: 16px;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 40px; /* Increase gap for better separation between sections */
+  gap: 40px;
+}
+.footer-section {
+  align-items: flex-start; /* Align items to the start */
 }
 
 .footer-section h4 {
+  font-weight: bold;
   color: #F2A365;
   margin-bottom: 20px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: flex-start; /* Align the header text from left to right */
 }
 
 .footer-section ul {
   list-style: none;
   padding: 0;
+  line-height: 1.8;
+}
+
+.footer-section ul li {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Align items vertically */
 }
 
 .footer-section ul li a {
+  font-weight: normal;
   color: #fff;
   text-decoration: none;
   transition: color 0.3s;
+}
+
+.footer-section ul li a i {
+  margin-right: 10px; /* Add space between icon and text */
+  color: #F2A365; /* Style the icon */
 }
 
 .footer-section ul li a:hover {
@@ -86,13 +114,20 @@ export default {
 
 .footer-contact p {
   margin: 5px 0;
-  line-height: 1.6; /* Increase line-height for better readability */
+  line-height: 1.8; /* Increased line spacing */
+  display: flex;
+  justify-content: flex-start; /* Align the text from left to right */
+}
+
+.footer-contact strong {
+  font-weight: bold; /* Set the strong element to bold */
+  margin-right: 5px; /* Add space between ":" and the text */
 }
 
 .social-icons a {
   color: #fff;
-  margin: 0 15px; /* Increase margin for more space between icons */
-  font-size: 24px; /* Larger icons for better visibility */
+  margin: 0 15px;
+  font-size: 24px;
   transition: color 0.3s;
 }
 
@@ -101,7 +136,7 @@ export default {
 }
 
 .footer-bottom {
-  margin-top: 40px; /* More space above the bottom section */
+  margin-top: 40px;
   text-align: center;
 }
 
@@ -112,16 +147,11 @@ export default {
   }
 
   .footer-section {
-    width: 100%; /* Full width for smaller screens */
+    width: 100%;
   }
 
   .social-icons {
     margin-top: 20px;
   }
 }
-.footer-section.footer-about {
-  margin-top: 20px; /* Add space between sections */
-}
-
-
 </style>

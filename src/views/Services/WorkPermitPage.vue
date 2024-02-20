@@ -9,7 +9,9 @@
     </div>
     <div class="content">
       <h2>Facilitating Work Authorization</h2>
-      <p>We assist in the issuance of work permits from the Ministry of Labor and Social Affairs, ensuring a smooth and compliant process for employing staff in Iraq.</p>
+      <p>Navigating the complexities of work permit issuance can be challenging, especially in a foreign country. We provide comprehensive assistance in obtaining work permits for your international staff, ensuring that all legal and administrative requirements are met. Our services include document preparation, application submission, and liaison with relevant authorities, making the process hassle-free for both employers and employees.
+        We assist with the entire process of obtaining work permits for your international staff. Our expertise in navigating the legal and administrative requirements ensures a hassle-free experience for both employers and employees.
+      </p>
       <div class="cta">
         <a href="/contact-us" class="cta-btn">Get In Touch</a>
       </div>
@@ -27,7 +29,7 @@ export default {
 /* Add your styles here */
 .work-permit-page {
   /* Your styles */
-  padding-top: 100px; /* Adjust this value to move the content below the header */
+ /* padding-top: 100px; /* Adjust this value to move the content below the header */
 }
 
 /* Style for the banner */

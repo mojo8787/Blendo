@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .welcome-page {
-  padding-top: 100px;
+ /* padding-top: 100px; */
 }
 
 .section {

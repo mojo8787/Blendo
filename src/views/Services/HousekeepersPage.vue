@@ -10,9 +10,10 @@
     </div>
     <div class="content">
       <h2>Professional Cleaning Solutions</h2>
-      <p>Our housekeeping services provide top-notch cleaning and maintenance for residential and commercial properties, ensuring a clean and comfortable environment for occupants.</p>
+      <p>At Warani Manpower, we understand the importance of a clean and organized environment for both comfort and productivity. Our housekeeping services are tailored to meet the unique needs of residential and commercial properties alike. Our team of experienced housekeepers is dedicated to upholding the highest standards of cleanliness and hygiene, ensuring that your space is always welcoming and spotless.</p>
+      <p>Whether you require regular cleaning services or a one-time deep clean, we have the expertise and equipment to deliver exceptional results. Our commitment to quality and attention to detail sets us apart, making us your ideal partner for all your cleaning needs.</p>
       <div class="cta">
-        <a href="/contact-us" class="cta-btn">Contact Us</a>
+        <a href="tel:+9647711855587" class="cta-btn">Call Us</a>
       </div>
     </div>
   </div>
@@ -27,7 +28,7 @@ export default {
 <style scoped>
 /* Add your styles here */
 .housekeepers-page {
-  padding-top: 90px; /* Adjust this value to move the content below the header */
+ /* padding-top: 90px; /* Adjust this value to move the content below the header */
 }
 
 /* Style for the media div */
@@ -75,6 +76,7 @@ export default {
   border-radius: 5px;
   transition: background-color 0.3s;
   margin-top: 20px; /* Example margin to create space between button and footer */
+  margin-bottom: 20px; /* Example margin to create space between button and footer */
 }
 
 /* Style for the call-to-action button hover state */

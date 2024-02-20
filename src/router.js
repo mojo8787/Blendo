@@ -16,6 +16,7 @@ import SpecialistPage from '@/views/AboutUs/SpecialistPage.vue';
 import GreenPromisePage from '@/views/AboutUs/GreenPromisePage.vue';
 import MeetTheMindPage from '@/views/AboutUs/MeetTheMindPage.vue';
 
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: [
@@ -36,6 +37,15 @@ const router = createRouter({
     { path: '/about-us/green-promise', name: 'green-promise', component: GreenPromisePage },
     { path: '/about-us/meet-the-mind', name: 'meet-the-mind', component: MeetTheMindPage },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
+
+
 
 export default router;

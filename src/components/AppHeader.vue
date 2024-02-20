@@ -7,9 +7,9 @@
       <nav class="navbar">
         <ul>
           <li><router-link to="/">Home</router-link></li>
-          <li class="dropdown">
+          <li class="dropdown" @mouseover="dropdowns.aboutUs = true" @mouseleave="dropdowns.aboutUs = false">
             <span>About Us <i class="arrow down"></i></span>
-            <div class="dropdown-content">
+            <div class="dropdown-content" v-show="dropdowns.aboutUs" @mouseover="dropdowns.aboutUs = true" @mouseleave="dropdowns.aboutUs = false">
               <router-link to="/about-us/welcome">Welcome to Warani Manpower</router-link>
               <router-link to="/about-us/goals">Our Goals</router-link>
               <router-link to="/about-us/visions">Visions</router-link>
@@ -18,9 +18,9 @@
               <router-link to="/about-us/meet-the-mind">Meet The Mind Behind Warani</router-link>
             </div>
           </li>
-          <li class="dropdown" @click="toggleDropdown('services')" :class="{ open: dropdowns.services }">
+          <li class="dropdown" @mouseover="dropdowns.services = true" @mouseleave="dropdowns.services = false">
             <span>Services <i class="arrow down"></i></span>
-            <div class="dropdown-content" v-show="dropdowns.services">
+            <div class="dropdown-content" v-show="dropdowns.services" @mouseover="dropdowns.services = true" @mouseleave="dropdowns.services = false">
               <router-link to="/services/recruitment">Recruitment and Employment</router-link>
               <router-link to="/services/onboarding">Staff Onboarding Services</router-link>
               <router-link to="/services/payroll">Payroll Management Services</router-link>
@@ -80,12 +80,13 @@ export default {
 
 <style scoped>
 /* Styles for the header */
-.header {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
+@media (max-width: 768px) {
+  .header {
+    height: 50px; /* Adjust the height as needed */
+  }
+  .main-content {
+    padding-top: 60px; /* Add enough padding to compensate for the reduced header size */
+  }
 }
 
 .header-content {
@@ -177,6 +178,7 @@ export default {
   background-color: #f9f9f9; /* Added background color on hover */
 }
 
+/* Mobile menu */
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
@@ -189,6 +191,59 @@ export default {
 
   .navbar ul li {
     margin: 10px 0;
+  }
+}
+
+/* Other styles */
+.navbar-toggle {
+  display: none; /* Hide the toggle button by default */
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .navbar-toggle:hover {
+    background-color: #f9f9f9;
+  }
+
+  .navbar ul {
+    display: none; /* Hide the menu items by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .navbar ul.active {
+    display: flex; /* Show the menu items when active */
+    flex-direction: column;
+  }
+
+  .navbar ul li {
+    margin: 0;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .navbar ul li:last-child {
+    border-bottom: none;
+  }
+
+  .navbar ul li a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .navbar ul li a:hover {
+    color: #A0522D;
   }
 }
 </style>

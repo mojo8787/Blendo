@@ -28,7 +28,7 @@ export default {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  padding-top: 100px;
+ /* padding-top: 100px; */
 }
 
 .banner {

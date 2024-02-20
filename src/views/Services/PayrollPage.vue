@@ -9,9 +9,10 @@
     </div>
     <div class="content">
       <h2>Efficient Payroll Solutions</h2>
-      <p>Our payroll management services provide accurate and timely processing of employee salaries, ensuring compliance with tax regulations and reducing the administrative burden on your HR department.</p>
+      <p>Managing payroll efficiently is essential for the smooth operation of any business. At Warani Manpower, we offer comprehensive payroll management services that simplify this complex process. Our expert team ensures accuracy and compliance with all legal and regulatory requirements, allowing you to focus on your core business activities.</p>
+      <p>Our services include detailed salary calculations, tax deductions, benefits administration, and timely disbursements. We also provide customized reports and support to address any payroll-related queries or concerns. With our efficient payroll solutions, you can rest assured that your employees are compensated accurately and on time.</p>
       <div class="cta">
-        <a href="/contact-us" class="cta-btn">Get Started</a>
+        <a href="/contact-us" class="cta-btn">Learn More</a>
       </div>
     </div>
   </div>
@@ -27,7 +28,7 @@ export default {
 /* Add your styles here */
 .payroll-page {
   /* Your styles */
-  padding-top: 100px; /* Adjust this value to move the content below the header */
+ /* padding-top: 100px; /* Adjust this value to move the content below the header */
 }
 
 /* Style for the media div */

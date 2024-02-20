@@ -3,11 +3,14 @@
     <div class="banner">
       <h1>Iraq Work Visa Services</h1>
     </div>
-    <div class="content">
-      <div class="media">
-        <!-- Remove the img tag -->
+    <div class="media">
+      <div class="media-overlay">
       </div>
-      <p>We provide comprehensive support for the issuance of entry visas to Iraq and the subsequent issuance of residency permits, ensuring compliance with local immigration laws.</p>
+    </div>
+    <div class="content">
+      <h2>Visa and Residency Permit Services</h2>
+      <p>At Warani Manpower, we understand the complexities of the immigration process for expatriates. Our visa and residency permit services are tailored to provide comprehensive support, ensuring a seamless experience for both employers and international staff.</p>
+      <p>From initial consultation to the final issuance of visas and residency permits, our expert team guides you through each step, ensuring compliance with all relevant immigration laws and regulations. We aim to facilitate a smooth transition for your expatriates, allowing them to focus on their new roles without the hassle of navigating bureaucratic hurdles.</p>
       <div class="cta">
         <a href="/contact-us" class="cta-btn">Get In Touch</a>
       </div>
@@ -22,40 +25,43 @@ export default {
 </script>
 
 <style scoped>
-/* Add your styles here */
 .visa-page {
-  /* Your styles */
-  padding-top: 100px; /* Adjust this value to move the content below the header */
+  padding-top: 20px;
 }
 
-/* Style for the banner */
 .banner {
-  background-color: #f0f0f0; /* Example background color */
-  padding: 20px; /* Example padding */
+  background-color: #f0f0f0;
+  padding: 20px;
   text-align: center;
 }
 
-/* Style for the h1 in the banner */
 .banner h1 {
-  margin: 0; /* Remove default margin */
-  color: #333; /* Example text color */
+  margin: 0;
+  color: #333;
 }
 
-/* Style for the content section */
 .content {
-  padding: 20px; /* Example padding */
+  padding: 20px;
   text-align: center;
 }
 
-/* Style for the media div */
 .media {
   background-image: url("@/assets/visa.jpg");
   background-size: cover;
   background-position: center;
-  height: 300px; /* Set a height for the div */
+  height: 500px;
+  position: relative;
 }
 
-/* Style for the call-to-action button */
+.media-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
 .cta .cta-btn {
   display: inline-block;
   padding: 10px 20px;
@@ -64,12 +70,16 @@ export default {
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s;
-  margin-bottom: 20px; /* Example margin to create space between text and button */
+  margin-bottom: 20px;
 }
 
-/* Style for the call-to-action button hover state */
 .cta .cta-btn:hover {
   background-color: #0056b3;
 }
 
+@media (max-width: 768px) {
+  .media {
+    height: 300px;
+  }
+}
 </style>

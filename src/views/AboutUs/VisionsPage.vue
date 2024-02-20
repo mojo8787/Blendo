@@ -28,8 +28,8 @@
     max-width: fill;
     margin: 0 auto;
     padding: 20px;
-    padding-top: 100px;
-  }
+ /* padding-top: 100px; */
+}
   
   .section-image {
     position: relative;

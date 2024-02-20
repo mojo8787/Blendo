@@ -24,7 +24,7 @@
   .goals-page {
     padding: 20px;
     background-color: #f9f9f9;
-    padding-top: 100px;
+    /* padding-top: 100px; /* Adjust this value to move the content below the header */
   }
   
   .goals-page .container {

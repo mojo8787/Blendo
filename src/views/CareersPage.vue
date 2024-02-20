@@ -88,29 +88,66 @@ export default {
     handleImageUpload(event) {
       this.candidate.personalImage = event.target.files[0];
     },
-    submitCV() {
-      // Handle CV submission logic here
-      console.log('Submitted:', this.candidate);
+    async submitCV() {
+      console.log('Submitting CV...');
+      const formData = new FormData();
+      formData.append('name', this.candidate.name);
+      formData.append('mobile', this.candidate.mobile);
+      formData.append('email', this.candidate.email);
+      formData.append('personalImage', this.candidate.personalImage);
+      formData.append('cv', this.candidate.cv);
+      formData.append('jobDesire', this.candidate.jobDesire);
+
+      for (let [key, value] of formData.entries()) {
+    console.log(`${key}: ${value}`);
+  }
+
+
+      try {
+        const response = await fetch('http://localhost:3000/submit-cv', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          console.log('CV submitted successfully');
+          // Clear the form
+          this.candidate = {
+            name: '',
+            mobile: '',
+            email: '',
+            personalImage: null,
+            cv: null,
+            jobDesire: ''
+          };
+          this.showCVForm = false; // Hide the form
+          // Show a success message to the user
+        } else {
+          console.error('Failed to submit CV');
+          // Show an error message to the user
+        }
+      } catch (error) {
+        console.error('Error submitting CV:', error);
+        // Show an error message to the user
+      }
     },
     applyNow(jobTitle) {
-  this.showCVForm = true;
-  this.candidate.jobDesire = jobTitle;
-  // Scroll to the form
-  this.$nextTick(() => {
-    const formElement = document.querySelector('.submit-cv');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-},
+      this.showCVForm = true;
+      this.candidate.jobDesire = jobTitle;
+      // Scroll to the form
+      this.$nextTick(() => {
+        const formElement = document.querySelector('.submit-cv');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    },
     toggleCVForm() {
       this.showCVForm = !this.showCVForm;
-    }
-  }
+    },
+  },
 };
 </script>
-
-
 
 <style scoped>
 .careers-page {
