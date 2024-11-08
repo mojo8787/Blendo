@@ -98,11 +98,6 @@ export default {
       formData.append('cv', this.candidate.cv);
       formData.append('jobDesire', this.candidate.jobDesire);
 
-      for (let [key, value] of formData.entries()) {
-    console.log(`${key}: ${value}`);
-  }
-
-
       try {
         const response = await fetch('http://localhost:3000/submit-cv', {
           method: 'POST',
@@ -111,7 +106,6 @@ export default {
 
         if (response.ok) {
           console.log('CV submitted successfully');
-          // Clear the form
           this.candidate = {
             name: '',
             mobile: '',
@@ -120,15 +114,12 @@ export default {
             cv: null,
             jobDesire: ''
           };
-          this.showCVForm = false; // Hide the form
-          // Show a success message to the user
+          this.showCVForm = false;
         } else {
           console.error('Failed to submit CV');
-          // Show an error message to the user
         }
       } catch (error) {
         console.error('Error submitting CV:', error);
-        // Show an error message to the user
       }
     },
     applyNow(jobTitle) {

@@ -64,35 +64,31 @@ export default {
       formData.append('message', this.contact.message);
 
       for (let [key, value] of formData.entries()) {
-    console.log(`${key}: ${value}`);
-  }
+        console.log(`${key}: ${value}`);
+      }
 
       try {
         const response = await fetch('http://localhost:3000/submit-contact', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(this.contact)
-});
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.contact)
+        });
 
         if (response.ok) {
           console.log('Contact form submitted successfully');
-          // Clear the form
           this.contact = {
             name: '',
             email: '',
             mobile: '',
             message: ''
           };
-          // Show a success message to the user
         } else {
           console.error('Failed to submit contact form');
-          // Show an error message to the user
         }
       } catch (error) {
         console.error('Error submitting contact form:', error);
-        // Show an error message to the user
       }
     }
   }

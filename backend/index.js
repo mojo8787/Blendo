@@ -17,14 +17,14 @@ app.use(express.json());
 // Set up multer for file uploads
 const upload = multer({ dest: 'uploads/' });
 
-// Configure your SMTP server details
+// Configure your SMTP server details using environment variables
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com',
-  port: 587,
+  host: process.env.SMTP_HOST || 'smtp-mail.outlook.com',
+  port: process.env.SMTP_PORT || 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: 'blend.warani@outlook.com',
-    pass: 'Blend@1987'
+    user: process.env.SMTP_USER || 'blend.warani@outlook.com',
+    pass: process.env.SMTP_PASS || 'Blend@1987'
   }
 });
 
