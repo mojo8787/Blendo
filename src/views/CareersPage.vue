@@ -95,14 +95,20 @@ export default {
       try {
         console.log('Submitting CV...');
         
-        const personalImageKey = `cv-uploads/${Date.now()}-${this.candidate.personalImage.name}`;
-        const cvKey = `cv-uploads/${Date.now()}-${this.candidate.cv.name}`;
+        const personalImageKey = `motasem/cv-uploads/${Date.now()}-${this.candidate.personalImage.name}`;
+        const cvKey = `motasem/cv-uploads/${Date.now()}-${this.candidate.cv.name}`;
         
         await uploadData({
           data: this.candidate.personalImage,
           path: personalImageKey,
           options: {
-            contentType: this.candidate.personalImage.type
+            accessLevel: 'guest',
+            contentType: this.candidate.personalImage.type,
+            onProgress: ({ transferredBytes, totalBytes }) => {
+              if (totalBytes) {
+                console.log(`Image upload progress ${Math.round((transferredBytes / totalBytes) * 100)}%`);
+              }
+            }
           }
         }).result;
 
@@ -110,7 +116,13 @@ export default {
           data: this.candidate.cv,
           path: cvKey,
           options: {
-            contentType: this.candidate.cv.type
+            accessLevel: 'guest',
+            contentType: this.candidate.cv.type,
+            onProgress: ({ transferredBytes, totalBytes }) => {
+              if (totalBytes) {
+                console.log(`CV upload progress ${Math.round((transferredBytes / totalBytes) * 100)}%`);
+              }
+            }
           }
         }).result;
 
