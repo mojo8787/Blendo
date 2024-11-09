@@ -37,7 +37,10 @@ const schema = a.schema({
       name: a.string(),
     })
     .returns(a.string())
-    .handler(a.handler.function(sayHello)),
+    .authorization((allow) => [
+      allow.guest(), // Changed from public() to guest()
+    ])
+    .handler(a.handler.function(sayHello)), // Wrap the handler with a.handler.function
 });
 
 export type Schema = ClientSchema<typeof schema>;

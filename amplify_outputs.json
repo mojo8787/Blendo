@@ -228,7 +228,23 @@
         }
       },
       "enums": {},
-      "nonModels": {}
+      "nonModels": {},
+      "queries": {
+        "sayHello": {
+          "name": "sayHello",
+          "isArray": false,
+          "type": "String",
+          "isRequired": false,
+          "arguments": {
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        }
+      }
     }
   },
   "storage": {
@@ -240,7 +256,7 @@
         "bucket_name": "amplify-waraniwebsite-sah-amplifyteamdrivebucket28-82wvgvkwm9w0",
         "aws_region": "eu-west-1",
         "paths": {
-          "cv-uploads/*": {
+          "cv-uploads/{identity_id}/*": {
             "guest": [
               "get",
               "list",
