@@ -25,5 +25,4 @@ pnpm-debug.log*
 
 # amplify
 .amplify
-amplify_outputs*
 amplifyconfiguration*

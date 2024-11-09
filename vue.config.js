@@ -6,6 +6,14 @@ module.exports = {
       directory: path.resolve(__dirname, 'src/assets'),
     },
   },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src/'),
+      },
+      extensions: ['.ts', '.js', '.vue', '.json']
+    }
+  }
 };
 
 

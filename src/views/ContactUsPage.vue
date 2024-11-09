@@ -38,6 +38,8 @@
         <button type="submit">Send Message</button>
       </form>
     </div>
+    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div v-if="successMessage" class="success-message">{{ successMessage }}</div>
   </div>
 </template>
 
@@ -51,21 +53,16 @@ export default {
         email: '',
         mobile: '',
         message: ''
-      }
+      },
+      errorMessage: '',
+      successMessage: ''
     };
   },
   methods: {
     async submitForm() {
       console.log('Contact form submitted:', this.contact);
-      const formData = new FormData();
-      formData.append('name', this.contact.name);
-      formData.append('email', this.contact.email);
-      formData.append('mobile', this.contact.mobile);
-      formData.append('message', this.contact.message);
-
-      for (let [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-      }
+      this.errorMessage = '';
+      this.successMessage = '';
 
       try {
         const response = await fetch('http://localhost:3000/submit-contact', {
@@ -78,6 +75,7 @@ export default {
 
         if (response.ok) {
           console.log('Contact form submitted successfully');
+          this.successMessage = 'Your message has been sent successfully!';
           this.contact = {
             name: '',
             email: '',
@@ -86,9 +84,11 @@ export default {
           };
         } else {
           console.error('Failed to submit contact form');
+          this.errorMessage = 'Failed to submit the form. Please try again later.';
         }
       } catch (error) {
         console.error('Error submitting contact form:', error);
+        this.errorMessage = 'An error occurred while submitting the form. Please check your network connection and try again.';
       }
     }
   }
@@ -174,5 +174,15 @@ button:hover {
   .contact-info .branch {
     margin-bottom: 20px;
   }
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 20px;
 }
 </style>

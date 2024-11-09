@@ -51,10 +51,14 @@
 </template>
 
 <script>
+import { generateClient } from '@aws-amplify/api';
+import { uploadData } from '@aws-amplify/storage';
+
 export default {
   name: 'CareersPage',
   data() {
     return {
+      client: generateClient(),
       jobList: [
         {
           title: 'Senior Petroleum Engineer',
@@ -68,7 +72,6 @@ export default {
           experience: '3+ years in human resources',
           image: require('@/assets/hr_specialist.jpg')
         }
-        // Add more job listings here
       ],
       candidate: {
         name: '',
@@ -89,43 +92,57 @@ export default {
       this.candidate.personalImage = event.target.files[0];
     },
     async submitCV() {
-      console.log('Submitting CV...');
-      const formData = new FormData();
-      formData.append('name', this.candidate.name);
-      formData.append('mobile', this.candidate.mobile);
-      formData.append('email', this.candidate.email);
-      formData.append('personalImage', this.candidate.personalImage);
-      formData.append('cv', this.candidate.cv);
-      formData.append('jobDesire', this.candidate.jobDesire);
-
       try {
-        const response = await fetch('http://localhost:3000/submit-cv', {
-          method: 'POST',
-          body: formData
+        console.log('Submitting CV...');
+        
+        const personalImageKey = `cv-uploads/${Date.now()}-${this.candidate.personalImage.name}`;
+        const cvKey = `cv-uploads/${Date.now()}-${this.candidate.cv.name}`;
+        
+        await uploadData({
+          data: this.candidate.personalImage,
+          path: personalImageKey,
+          options: {
+            contentType: this.candidate.personalImage.type
+          }
+        }).result;
+
+        await uploadData({
+          data: this.candidate.cv,
+          path: cvKey,
+          options: {
+            contentType: this.candidate.cv.type
+          }
+        }).result;
+
+        await this.client.models.JobApplication.create({
+          name: this.candidate.name,
+          email: this.candidate.email,
+          mobile: this.candidate.mobile,
+          jobDesire: this.candidate.jobDesire,
+          personalImage: personalImageKey,
+          cv: cvKey
         });
 
-        if (response.ok) {
-          console.log('CV submitted successfully');
-          this.candidate = {
-            name: '',
-            mobile: '',
-            email: '',
-            personalImage: null,
-            cv: null,
-            jobDesire: ''
-          };
-          this.showCVForm = false;
-        } else {
-          console.error('Failed to submit CV');
-        }
+        console.log('Application submitted successfully');
+        this.resetForm();
       } catch (error) {
-        console.error('Error submitting CV:', error);
+        console.error('Error submitting application:', error);
       }
+    },
+    resetForm() {
+      this.candidate = {
+        name: '',
+        mobile: '',
+        email: '',
+        personalImage: null,
+        cv: null,
+        jobDesire: ''
+      };
+      this.showCVForm = false;
     },
     applyNow(jobTitle) {
       this.showCVForm = true;
       this.candidate.jobDesire = jobTitle;
-      // Scroll to the form
       this.$nextTick(() => {
         const formElement = document.querySelector('.submit-cv');
         if (formElement) {
