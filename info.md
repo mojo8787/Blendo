@@ -96,7 +96,7 @@ Provides a contact form for users to send messages to the company.
 
 #### Relationship to AWS Amplify
 - **Data Models**: Represents a similar use case to `ContactInquiry` for collecting user input.
-- **Backend Interaction**: Demonstrates frontend-to-backend data submission.
+- **Backend Interaction**: Demonstrates frontend-to-backend data submission using AWS Amplify's API client. The form data is submitted to the `ContactInquiry` model in the backend using the `generateClient` function from `@aws-amplify/api`, configured with IAM authentication.
 
 ## Overall Relationship
 

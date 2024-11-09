@@ -43,11 +43,18 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { generateClient } from '@aws-amplify/api';
+import type { Schema } from '../../amplify/data/resource';
+
+export default defineComponent({
   name: 'ContactUsPage',
   data() {
     return {
+      client: generateClient<Schema>({
+        authMode: 'iam'  // Match your schema's defaultAuthorizationMode
+      }),
       contact: {
         name: '',
         email: '',
@@ -65,34 +72,28 @@ export default {
       this.successMessage = '';
 
       try {
-        const response = await fetch('http://localhost:3000/submit-contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(this.contact)
+        const result = await this.client.models.ContactInquiry.create({
+          name: this.contact.name,
+          email: this.contact.email,
+          mobile: this.contact.mobile,
+          message: this.contact.message
         });
 
-        if (response.ok) {
-          console.log('Contact form submitted successfully');
-          this.successMessage = 'Your message has been sent successfully!';
-          this.contact = {
-            name: '',
-            email: '',
-            mobile: '',
-            message: ''
-          };
-        } else {
-          console.error('Failed to submit contact form');
-          this.errorMessage = 'Failed to submit the form. Please try again later.';
-        }
+        console.log('Contact form submitted successfully', result);
+        this.successMessage = 'Your message has been sent successfully!';
+        this.contact = {
+          name: '',
+          email: '',
+          mobile: '',
+          message: ''
+        };
       } catch (error) {
         console.error('Error submitting contact form:', error);
-        this.errorMessage = 'An error occurred while submitting the form. Please check your network connection and try again.';
+        this.errorMessage = error instanceof Error ? error.message : 'An error occurred while submitting the form';
       }
     }
   }
-};
+});
 </script>
 
 

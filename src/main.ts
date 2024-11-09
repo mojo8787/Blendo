@@ -2,10 +2,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { Amplify } from 'aws-amplify';
-import amplifyconfig from '../amplify_outputs.json';
+import outputs from '../amplify_outputs.json';
 
-// Configure Amplify with the outputs directly
-Amplify.configure(amplifyconfig);
+Amplify.configure(outputs);
 
 const app = createApp(App);
 app.use(router);
