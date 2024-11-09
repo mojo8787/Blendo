@@ -256,7 +256,7 @@
         "bucket_name": "amplify-waraniwebsite-sah-amplifyteamdrivebucket28-82wvgvkwm9w0",
         "aws_region": "eu-west-1",
         "paths": {
-          "cv-uploads/*": {
+          "motasem/cv-uploads/*": {
             "guest": [
               "get",
               "list",
@@ -269,7 +269,7 @@
               "delete"
             ]
           },
-          "public/*": {
+          "motasem/public/*": {
             "guest": [
               "get",
               "list",

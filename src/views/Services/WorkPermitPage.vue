@@ -24,7 +24,6 @@ export default {
   name: 'WorkPermitPage',
 };
 </script>
-
 <style scoped>
 /* Add your styles here */
 .work-permit-page {
@@ -93,3 +92,4 @@ export default {
   background-color: #0056b3; /* Example button color on hover */
 }
 </style>
+
