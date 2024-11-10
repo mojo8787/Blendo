@@ -120,6 +120,106 @@
             "primaryKeyFieldName": "id",
             "sortKeyFieldNames": []
           }
+        },
+        "JobApplication": {
+          "name": "JobApplication",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "email": {
+              "name": "email",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "mobile": {
+              "name": "mobile",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "jobDesire": {
+              "name": "jobDesire",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "personalImage": {
+              "name": "personalImage",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "cv": {
+              "name": "cv",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            },
+            "updatedAt": {
+              "name": "updatedAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            }
+          },
+          "syncable": true,
+          "pluralName": "JobApplications",
+          "attributes": [
+            {
+              "type": "model",
+              "properties": {}
+            },
+            {
+              "type": "auth",
+              "properties": {
+                "rules": [
+                  {
+                    "allow": "public",
+                    "provider": "iam",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "primaryKeyInfo": {
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
+          }
         }
       },
       "enums": {},
@@ -135,30 +235,28 @@
         "bucket_name": "amplify-waraniwebsite-sah-amplifyteamdrivebucket28-82wvgvkwm9w0",
         "aws_region": "eu-west-1",
         "paths": {
-          "motasem/cv-uploads/*": {
-            "guest": [
-              "get",
-              "list",
-              "write"
-            ],
+          "public/*": {
             "authenticated": [
               "get",
               "list",
               "write",
               "delete"
+            ],
+            "guest": [
+              "get",
+              "list",
+              "write"
             ]
           },
-          "motasem/public/*": {
-            "guest": [
-              "get",
-              "list",
-              "write"
-            ],
+          "public/motasem/cv-uploads/*": {
             "authenticated": [
               "get",
               "list",
               "write",
               "delete"
+            ],
+            "guest": [
+              "write"
             ]
           }
         }

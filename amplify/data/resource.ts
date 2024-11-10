@@ -9,6 +9,17 @@ const schema = a.schema({
       message: a.string(),
     })
     .authorization((allow) => [allow.guest()]),
+    
+  JobApplication: a
+    .model({
+      name: a.string(),
+      email: a.string(),
+      mobile: a.string(),
+      jobDesire: a.string(),
+      personalImage: a.string(),
+      cv: a.string()
+    })
+    .authorization((allow) => [allow.guest()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

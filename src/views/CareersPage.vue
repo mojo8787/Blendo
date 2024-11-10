@@ -93,14 +93,19 @@ export default {
     },
     async submitCV() {
       try {
+        if (!this.candidate.personalImage || !this.candidate.cv) {
+          throw new Error('Please upload both personal image and CV');
+        }
+
         console.log('Submitting CV...');
         
         const personalImageKey = `motasem/cv-uploads/${Date.now()}-${this.candidate.personalImage.name}`;
         const cvKey = `motasem/cv-uploads/${Date.now()}-${this.candidate.cv.name}`;
         
+        // Upload personal image
         await uploadData({
+          key: personalImageKey,
           data: this.candidate.personalImage,
-          path: personalImageKey,
           options: {
             accessLevel: 'guest',
             contentType: this.candidate.personalImage.type,
@@ -112,9 +117,10 @@ export default {
           }
         }).result;
 
+        // Upload CV
         await uploadData({
+          key: cvKey,
           data: this.candidate.cv,
-          path: cvKey,
           options: {
             accessLevel: 'guest',
             contentType: this.candidate.cv.type,
@@ -126,7 +132,7 @@ export default {
           }
         }).result;
 
-        await this.client.models.JobApplication.create({
+        const result = await this.client.models.JobApplication.create({
           name: this.candidate.name,
           email: this.candidate.email,
           mobile: this.candidate.mobile,
@@ -135,7 +141,7 @@ export default {
           cv: cvKey
         });
 
-        console.log('Application submitted successfully');
+        console.log('Application submitted successfully', result);
         this.resetForm();
       } catch (error) {
         console.error('Error submitting application:', error);
